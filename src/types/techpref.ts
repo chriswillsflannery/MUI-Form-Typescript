@@ -1,0 +1,1 @@
+export type TechPref = "front end" | "back end" | "both";
