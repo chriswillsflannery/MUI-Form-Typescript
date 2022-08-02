@@ -1,5 +1,5 @@
 import { useEffect, useState, useCallback, Dispatch, SetStateAction } from 'react';
-import { InputLabel, MenuItem, Select } from '@mui/material';
+import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 
 import { URL } from '../../constants/timezone';
 
@@ -34,7 +34,7 @@ export const TimeZone: React.FunctionComponent<TimeZoneProps> = ({
     }, [fetchZones]);
 
     return (
-        <>
+        <FormControl>
             <InputLabel>Time Zone</InputLabel>
             <Select
                 value={timezone}
@@ -50,6 +50,6 @@ export const TimeZone: React.FunctionComponent<TimeZoneProps> = ({
                     ))
                 )}
             </Select>
-        </>
+        </FormControl>
     );
 };
