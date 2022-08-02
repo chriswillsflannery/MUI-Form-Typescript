@@ -37,7 +37,7 @@ export const TimeZone: React.FunctionComponent<TimeZoneProps> = ({
         <>
             <InputLabel>Time Zone</InputLabel>
             <Select
-                value={timezone || "Africa/Abidjan"}
+                value={timezone}
                 onChange={(e: any) => setTimezone(e.target.value)}
                 disabled={isFetchingZones}
                 sx={{ marginBottom: '16px' }}

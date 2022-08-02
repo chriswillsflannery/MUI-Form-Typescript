@@ -90,7 +90,7 @@ function App() {
             toppings={toppings}
             setToppings={setToppings}
           />
-          <Button type="submit" variant="outlined">Submit</Button>
+          <Button type="submit" variant="outlined" data-testid="submitButton">Submit</Button>
           <Button onClick={handleReset}>Reset</Button>
         </form>
       </Paper>
