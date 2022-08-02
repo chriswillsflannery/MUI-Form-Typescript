@@ -31,10 +31,20 @@ describe('App', () => {
   });
 
   test('with invalid Password input displays error', () => {
-
+    render(<App />);
+    const submitButton = screen.getByTestId('submitButton');
+    fireEvent.click(submitButton);
+    const error = screen.getByText('password must be 8 or more chars');
+    expect(error).toBeInTheDocument();
   });
 
   test('with valid Password input no error displayed', () => {
-
+    render(<App />);
+    const input = screen.getByLabelText('Password');
+    fireEvent.change(input, {target: {value: 'validPassword'}})
+    const submitButton = screen.getByTestId('submitButton');
+    fireEvent.click(submitButton);
+    const error = screen.queryByText('password must be 8 or more chars');
+    expect(error).toBe(null);
   });
 });
