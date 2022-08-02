@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { Checkbox, FormControlLabel, FormGroup, Typography } from "@mui/material";
+import { Checkbox, FormControl, FormLabel, FormControlLabel, FormGroup } from "@mui/material";
 
 import { TOPPINGS } from "../../constants/pizzatoppings";
 import { Toppings } from '../../types/pizzatoppings';
@@ -26,9 +26,9 @@ export const PizzaToppings: React.FunctionComponent<PizzaToppingsProps> = ({
   }
 
   return (
-    <>
-      <Typography>Pizza Toppings</Typography>
-      <FormGroup sx={{ marginBottom: '16px' }} >
+    <FormControl>
+      <FormLabel id="demo-check-boxes-group-label">Pizza Toppings</FormLabel>
+      <FormGroup sx={{ marginBottom: '16px' }} aria-labelledby="demo-check-boxes-group-label" >
         {TOPPINGS.map((topping, idx) => (
           <FormControlLabel
             key={idx}
@@ -43,6 +43,6 @@ export const PizzaToppings: React.FunctionComponent<PizzaToppingsProps> = ({
           />
         ))}
       </FormGroup>
-    </>
+    </FormControl>
   );
 }

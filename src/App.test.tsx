@@ -30,5 +30,11 @@ describe('App', () => {
     expect(error).toBe(null);
   });
 
-  
+  test('with invalid Password input displays error', () => {
+
+  });
+
+  test('with valid Password input no error displayed', () => {
+
+  });
 });

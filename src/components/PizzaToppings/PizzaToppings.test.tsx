@@ -12,7 +12,7 @@ describe('PizzaToppings', () => {
       toppings={{}}
       setToppings={setToppings}
     />);
-    const input = screen.getByText('Pizza Toppings');
+    const input = screen.getByLabelText('Pizza Toppings');
     expect(input).toBeInTheDocument()
   });
 });
