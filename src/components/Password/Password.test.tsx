@@ -14,6 +14,7 @@ describe('Password', () => {
       setPasswordValue={setPasswordValue}
       errors={{}}
       setErrors={setErrors}
+      sx={{}}
     />);
     const input = screen.getByLabelText('Password');
     expect(input).toBeInTheDocument()

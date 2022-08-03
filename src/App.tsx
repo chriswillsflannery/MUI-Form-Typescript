@@ -21,6 +21,8 @@ import {
 
 import './App.css';
 
+const addBottomMargin = { marginBottom: '16px' };
+
 function App() {
   const [textValue, setTextValue] = useState<string>('');
   const [passwordValue, setPasswordValue] = useState<string>('');
@@ -30,6 +32,7 @@ function App() {
   const [toppings, setToppings] = useState<Toppings>({});
   const [errors, setErrors] = useState<Errors>({});
 
+  // use react hook form, formik etc.
   const validateFormInputs = () => {
     validateNameInput(textValue, setErrors);
     validatePasswordInput(passwordValue, setErrors);
@@ -67,30 +70,43 @@ function App() {
   return (
     <main className="App">
       <Paper className="formContainer">
-        <Typography sx={{ marginBottom: '16px' }}>ConnectsYa Form</Typography>
+        <Typography sx={addBottomMargin}>ConnectsYa Form</Typography>
         <form onSubmit={handleOnSubmit}>
           <Name
             textValue={textValue}
             setTextValue={setTextValue}
             errors={errors}
             setErrors={setErrors}
+            sx={addBottomMargin}
           />
           <Password
             passwordValue={passwordValue}
             setPasswordValue={setPasswordValue}
             errors={errors}
             setErrors={setErrors}
+            sx={addBottomMargin}
           />
-          <Birthday birthdayValue={birthdayValue} setBirthdayValue={setBirthdayValue} />
-          <TimeZone timezone={timezone} setTimezone={setTimezone} />
+          <Birthday
+            birthdayValue={birthdayValue}
+            setBirthdayValue={setBirthdayValue}
+            sx={addBottomMargin}
+          />
+          <TimeZone
+            timezone={timezone}
+            setTimezone={setTimezone}
+            sx={addBottomMargin}
+          />
           <TechPreference
             techPreference={techPreference}
-            setTechPreference={setTechPreference} />
+            setTechPreference={setTechPreference}
+            sx={addBottomMargin}
+          />
           <PizzaToppings
             toppings={toppings}
             setToppings={setToppings}
+            sx={addBottomMargin}
           />
-          <Button type="submit" variant="outlined" data-testid="submitButton">Submit</Button>
+          <Button type="submit" variant="outlined">Submit</Button>
           <Button onClick={handleReset}>Reset</Button>
         </form>
       </Paper>

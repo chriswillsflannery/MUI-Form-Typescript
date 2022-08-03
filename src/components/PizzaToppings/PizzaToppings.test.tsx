@@ -11,6 +11,7 @@ describe('PizzaToppings', () => {
     render(<PizzaToppings
       toppings={{}}
       setToppings={setToppings}
+      sx={{}}
     />);
     const input = screen.getByLabelText('Pizza Toppings');
     expect(input).toBeInTheDocument()

@@ -11,6 +11,7 @@ describe('TechPreference', () => {
     render(<TechPreference
       techPreference=""
       setTechPreference={setTechPreference}
+      sx={{}}
     />);
     const input = screen.getByLabelText('Tech Preference');
     expect(input).toBeInTheDocument()

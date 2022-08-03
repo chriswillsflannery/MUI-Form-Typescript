@@ -14,41 +14,49 @@ describe('App', () => {
 
   test('with invalid Name input displays error', () => {
     render(<App />);
-    const submitButton = screen.getByTestId('submitButton');
+    const submitButton = screen.getByRole('button', { name: 'Submit' });
+    expect(screen.queryByText('please enter a name')).toBe(null);
     fireEvent.click(submitButton);
-    const error = screen.getByText('please enter a name');
-    expect(error).toBeInTheDocument();
+    expect(screen.getByText('please enter a name')).toBeInTheDocument();
   });
 
   test('with valid Name input no error displayed', () => {
     render(<App />);
     const input = screen.getByLabelText('Name');
     fireEvent.change(input, {target: {value: 'myname'}})
-    const submitButton = screen.getByTestId('submitButton');
+    const submitButton = screen.getByRole('button', { name: 'Submit' });
     fireEvent.click(submitButton);
-    const error = screen.queryByText('please enter a name');
-    expect(error).toBe(null);
+    expect(screen.queryByText('please enter a name')).toBe(null);
   });
 
   test('with invalid Password input displays error', () => {
     render(<App />);
-    const submitButton = screen.getByTestId('submitButton');
+    const submitButton = screen.getByRole('button', { name: 'Submit' });
+    expect(screen.queryByText('password must be 8 or more chars')).toBe(null);
     fireEvent.click(submitButton);
-    const error = screen.getByText('password must be 8 or more chars');
-    expect(error).toBeInTheDocument();
+    expect(screen.getByText('password must be 8 or more chars')).toBeInTheDocument();
   });
 
   test('with valid Password input no error displayed', () => {
     render(<App />);
     const input = screen.getByLabelText('Password');
     fireEvent.change(input, {target: {value: 'validPassword'}})
-    const submitButton = screen.getByTestId('submitButton');
+    const submitButton = screen.getByRole('button', { name: 'Submit' });
     fireEvent.click(submitButton);
-    const error = screen.queryByText('password must be 8 or more chars');
-    expect(error).toBe(null);
+    expect(screen.queryByText('password must be 8 or more chars')).toBe(null);
   });
 
-  test('submit button clears all fields', () => {
-
+  test('reset button clears all fields', () => {
+    render(<App />);
+    const nameInput = screen.getByLabelText('Name');
+    const passwordInput = screen.getByLabelText('Password');
+    fireEvent.change(nameInput, {target: {value: 'validName'}})
+    fireEvent.change(passwordInput, {target: {value: 'validPassword'}});
+    expect(screen.getByDisplayValue('validName')).toBeInTheDocument();
+    expect(screen.getByDisplayValue('validPassword')).toBeInTheDocument();
+    const resetButton = screen.getByRole('button', { name: 'Reset' });
+    fireEvent.click(resetButton);
+    expect(screen.queryByDisplayValue('validName')).toBe(null);
+    expect(screen.queryByDisplayValue('validPassword')).toBe(null);
   });
 });

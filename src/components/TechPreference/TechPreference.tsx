@@ -4,6 +4,7 @@ import {
   FormLabel,
   RadioGroup,
   Radio,
+  SxProps,
 } from "@mui/material";
 import { Dispatch, SetStateAction } from 'react';
 
@@ -12,14 +13,16 @@ import { TechPref } from '../../types/techpref';
 interface TechPreferencesProps {
   techPreference: string;
   setTechPreference: Dispatch<SetStateAction<TechPref>>;
+  sx: SxProps;
 }
 
 export const TechPreference: React.FunctionComponent<TechPreferencesProps> = ({
   techPreference,
-  setTechPreference
+  setTechPreference,
+  sx,
 }) => (
   <FormControl
-    sx={{ marginBottom: '16px' }}
+    sx={sx}
   >
     <FormLabel id="demo-radio-buttons-group-label">Tech Preference</FormLabel>
     <RadioGroup

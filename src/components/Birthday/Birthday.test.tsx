@@ -11,6 +11,7 @@ describe('Birthday', () => {
     render(<Birthday
       birthdayValue=''
       setBirthdayValue={setBirthdayValue}
+      sx={{}}
     />);
     const input = screen.getByLabelText('Birthday');
     expect(input).toBeInTheDocument()

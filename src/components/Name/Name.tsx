@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { TextField } from "@mui/material";
+import { TextField, SxProps } from "@mui/material";
 import { Errors } from '../../utilities/formValidation';
 
 interface NameProps {
@@ -7,6 +7,7 @@ interface NameProps {
   setTextValue: Dispatch<SetStateAction<string>>;
   errors: Errors;
   setErrors: Dispatch<SetStateAction<Errors>>;
+  sx: SxProps;
 }
 
 export const Name: React.FunctionComponent<NameProps> = ({
@@ -14,13 +15,10 @@ export const Name: React.FunctionComponent<NameProps> = ({
   setTextValue,
   errors,
   setErrors,
+  sx,
 }) => {
   const handleChange = (e: any) => {
-    setErrors((prevErrors: Errors) => {
-      const newErrors = { ...prevErrors };
-      delete newErrors.textValue;
-      return newErrors;
-    });
+    setErrors(({ textValue, ...prevErrors}: Errors) => prevErrors);
     setTextValue(e.target.value);
   }
 
@@ -32,7 +30,7 @@ export const Name: React.FunctionComponent<NameProps> = ({
       label="Name"
       error={errors.textValue}
       helperText={errors.textValue && 'please enter a name'}
-      sx={{ marginBottom: '16px' }}
+      sx={sx}
     />
   );
 };

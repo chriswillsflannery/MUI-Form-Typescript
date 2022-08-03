@@ -11,6 +11,7 @@ describe('TimeZone', () => {
     render(<TimeZone
       timezone=""
       setTimezone={setTimezone}
+      sx={{}}
     />);
     const input = screen.getByText('Time Zone');
     expect(input).toBeInTheDocument()

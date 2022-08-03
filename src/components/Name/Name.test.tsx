@@ -14,6 +14,7 @@ describe('Name', () => {
       setTextValue={setTextValue}
       errors={{}}
       setErrors={setErrors}
+      sx={{}}
     />);
     const input = screen.getByLabelText('Name');
     expect(input).toBeInTheDocument()

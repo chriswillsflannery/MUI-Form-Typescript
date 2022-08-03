@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from 'react';
-import { TextField } from "@mui/material";
+import { SxProps, TextField } from "@mui/material";
 import { Errors } from '../../utilities/formValidation';
 
 interface PasswordProps {
@@ -7,6 +7,7 @@ interface PasswordProps {
   setPasswordValue: Dispatch<SetStateAction<string>>;
   errors: Errors;
   setErrors: Dispatch<SetStateAction<Errors>>;
+  sx: SxProps;
 }
 
 export const Password: React.FunctionComponent<PasswordProps> = ({
@@ -14,14 +15,11 @@ export const Password: React.FunctionComponent<PasswordProps> = ({
   setPasswordValue,
   errors,
   setErrors,
+  sx,
 }) => {
 
   const handleChange = (e: any) => {
-    setErrors((prevErrors: Errors) => {
-      const newErrors = { ...prevErrors };
-      delete newErrors.passwordValue;
-      return newErrors;
-    });
+    setErrors(({ passwordValue, ...prevErrors}: Errors) => prevErrors);
     setPasswordValue(e.target.value);
   }
 
@@ -34,7 +32,7 @@ export const Password: React.FunctionComponent<PasswordProps> = ({
       label="Password"
       error={errors.passwordValue}
       helperText={errors.passwordValue && 'password must be 8 or more chars'}
-      sx={{ marginBottom: '16px' }}
+      sx={sx}
     />
   );
 };
