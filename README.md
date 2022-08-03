@@ -30,3 +30,10 @@ Note - included libraries have intentionally been kept light. You will notice th
 Note - I have included a developer's comment in the TimeZone component.
 
 -  [World Time API](http://worldtimeapi.org/api/timezone)
+
+## Additions/Improvements I would make in an enterprise app
+
+1. Generate Form schema JSON blob to dictate form fields, permissions and restrictions, such as you might find on [react-jsonschema-form](https://react-jsonschema-form.readthedocs.io/en/latest/). What if you need multiple applications to dynamically generate the same form? What if you want a marketing or non-technical team member to update some form fields? Use a JSON blob as a single source of truth.
+2. Use a form validation library like [react-hook-form](https://react-hook-form.com/) or [formik](https://formik.org/) for out-of-the-box state management and error handling. This application intentionally omitted these to demonstrate understanding of what these libraries do under-the-hood.
+3. Use a Typescript schema generator/type builder like [typebox](https://github.com/sinclairzx81/typebox) or schema validator like zod. [zod](https://github.com/colinhacks/zod). I view these as nice-to-haves and will certainly improve workflow.
+4. This is my first time working with Material UI components so I would like to have a much deeper dive into best practices.
