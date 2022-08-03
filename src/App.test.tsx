@@ -47,4 +47,8 @@ describe('App', () => {
     const error = screen.queryByText('password must be 8 or more chars');
     expect(error).toBe(null);
   });
+
+  test('submit button clears all fields', () => {
+
+  });
 });
